@@ -1,6 +1,8 @@
 import java.util.Arrays;
 import java.util.Scanner;
 
+import static java.lang.Integer.max;
+
 
 public class MinimumBribe {
     static void minimumBribes(int[] queue) {
@@ -13,7 +15,7 @@ public class MinimumBribe {
                 System.out.println("Too chaotic");
                 return;
             }
-            for (int j = 0; j < i; j++) {
+            for (int  j =  max(0,queue[i]-2); j < i; j++) {
                 if (queue[j] > queue[i]) {
                     bribes++;
                     temp  = queue[j];
