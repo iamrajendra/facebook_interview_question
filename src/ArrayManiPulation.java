@@ -10,25 +10,23 @@ public class ArrayManiPulation {
 
     // Complete the arrayManipulation function below.
     static long arrayManipulation(int n, int[][] queries) {
-        int[] compute = new int[n];
-        int a, b, k;
-        int max = 0;
+        long[] computation = new long[n];
+
         for (int i = 0; i < queries.length; i++) {
-//            because array start from  position zero
-            a = queries[i][0]-1;
-            b = queries[i][1]-1;
-            k = queries[i][2];
+            int a = queries[i][0] - 1;
+            int b = queries[i][1] - 1;
+            int k = queries[i][2];
 
-//            add the  value of K from a to b
-            for (int j = a; j <=b; j++) {
-                compute[j] = compute[j]+k;
+            computation[a] += k;
+            if (b + 1 < n ) {
+                computation[b + 1] -= k;
             }
-
-
         }
-//        after the compute find the max number
-        for (int i = 0; i < compute.length; i++) {
-            max  = max(max,compute[i]);
+
+        long max = 0; long sum = 0;
+        for (int i = 0; i < n; i++) {
+            sum += computation[i];
+            max = Math.max(max, sum);
         }
 
         return max;
